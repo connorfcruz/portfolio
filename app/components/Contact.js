@@ -7,12 +7,11 @@ export default function Contact() {
         style={{ fontFamily: "var(--font-display)" }}
         className="text-2xl font-semibold tracking-tight"
       >
-        Get in touch
+        Get In Touch
       </h2>
 
       <p className="mt-4 max-w-[56ch] leading-relaxed text-[var(--muted)]">
-        I'm open to internships, contract work, and questions about anything
-        above. Email is the fastest way to reach me.
+        I'm open to internships, work, and any questions. Please reach out via the provided email.
       </p>
 
       <a

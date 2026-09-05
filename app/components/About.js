@@ -2,8 +2,7 @@ import { profile } from "../data/profile";
 
 export default function About() {
   return (
-    // The one tinted band on the page, to separate the work from
-    // the person without adding another border.
+    // Tinted band
     <section id="about" className="bg-[var(--band)] py-16">
       <div className="mx-auto max-w-3xl px-6">
         <h2

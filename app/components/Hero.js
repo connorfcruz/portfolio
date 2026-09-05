@@ -3,8 +3,7 @@ import { profile } from "../data/profile";
 export default function Hero() {
   return (
     <section className="mx-auto max-w-3xl px-6 pt-10 pb-20">
-      {/* The headline is the loudest thing on the page. Everything
-          else stays quiet so this one element carries the weight. */}
+      {}
       <h1
         style={{ fontFamily: "var(--font-display)" }}
         className="rise max-w-[19ch] text-[2.6rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--ink)] sm:text-6xl"

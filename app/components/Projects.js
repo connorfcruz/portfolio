@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { profile } from "../data/profile";
 
+/* Credit to Claude Opus 5 for code formatting */
+
 export default function Projects() {
   return (
     <section id="work" className="mx-auto max-w-3xl px-6 py-16">
