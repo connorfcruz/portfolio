@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio
 
-## Getting Started
+Source repo for my portfolio site. Built with Next.js and Tailwind. Deployed with Vercel.
 
-First, run the development server:
+**Live at:** [connor-cruz-portfolio.vercel.app](https://connor-cruz-portfolio.vercel.app)
+
+## Running it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To check a production build before pushing:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+This catches import and path errors faster than waiting on a remote build.
 
-To learn more about Next.js, take a look at the following resources:
+## How it's organized
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All content lives in `app/data/profile.js`: name, bio, skills, links, and the
+project list. The components read from it, so updating the site normally means
+editing that one file and nothing else.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+app/
+├── data/profile.js        Everything the site displays
+├── components/
+│   ├── Hero.js            Opening statement and top-level links
+│   ├── Projects.js        Project list
+│   ├── About.js           Bio and skills
+│   └── Contact.js         Email and profiles
+├── layout.js              Fonts, metadata, nav, footer
+├── page.js                Composes the four sections
+└── globals.css            Color tokens and base styles
+```
 
-## Deploy on Vercel
+`public/` holds the résumé, project images, and paper PDFs.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding a project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Append an entry to the `projects` array in `profile.js`:
+
+```js
+{
+  title: "Project name",
+  year: "2026",
+  blurb: "What it does and what was hard about it.",
+  stack: ["C", "KiCad"],
+  image: { src: "/projects/name.jpg", alt: "Description for screen readers." },
+  links: [
+    { label: "Code", href: "https://github.com/..." },
+  ],
+  featured: true,
+}
+```
+
+`links` is a generic list, so a project can carry a repo, a live site, a PDF, or
+any combination. `image` and `featured` are optional — only featured projects
+with an image render one, which keeps the visual weight on the strongest work.
+
+## Theming
+
+The palette is six CSS variables at the top of `app/globals.css`:
+
+```css
+--paper   page background
+--band    tinted section background
+--ink     headings and body text
+--muted   secondary text
+--rule    dividing lines
+--accent  links
+```
+
+Changing those six values re-themes the whole site. Every component references
+them rather than hardcoded colors. Contrast ratios were checked against WCAG AA
+before the current palette was chosen.
+
+## Deployment
+
+The repo is connected to Vercel. Pushing to `main` deploys to production;
+pushes to other branches get their own preview URLs. Failed builds leave
+production untouched.
+
+## Notes
+
+- Images go in `public/` and must be committed. Use lowercase filenames —
+  Windows treats `.JPG` and `.jpg` as the same file, GitHub's servers don't,
+  and the mismatch only surfaces after deploying.
+- Compress images before committing. Git stores every version of a binary
+  permanently, so uncompressed photos bloat every future clone.
+- Tailwind v4 configures through `@theme` in CSS rather than
+  `tailwind.config.js`. Guides written for v3 will not apply.

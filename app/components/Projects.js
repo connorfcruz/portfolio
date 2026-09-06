@@ -44,13 +44,13 @@ export default function Projects() {
                 weight lands on your strongest work rather than
                 spreading evenly across everything. */}
             {project.featured && project.image && (
-              <div className="relative mt-6 aspect-[3/2] overflow-hidden bg-[var(--band)]">
+              <div className="mt-6 overflow-hidden bg-[var(--band)]">
                 <Image
                   src={project.image.src}
                   alt={project.image.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 672px"
-                  className="object-cover"
+                  width={1476}
+                  height={1600}
+                  className="h-auto w-full"
                 />
               </div>
             )}

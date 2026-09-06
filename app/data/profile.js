@@ -1,7 +1,7 @@
 export const profile = {
   name: "Connor Cruz",
   // First impression
-  headline: "I build sensing hardware, make assistive software, and use computation for relevant issues.",
+  headline: "I build sensing hardware and assistive software. Most projects ends up being about memory: both what people keep and what quietly disappears.",
   // Status line
   status: "First-year Biomedical Engineering student at Yale University. Looking for research and internship work in sensing, instrumentation, and healthcare.",
   location: "New Haven, CT",
