@@ -6,7 +6,7 @@ export default function Hero() {
       {}
       <h1
         style={{ fontFamily: "var(--font-display)" }}
-        className="rise max-w-[19ch] text-[2.6rem] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--ink)] sm:text-6xl"
+        className="rise max-w-[24ch] text-[2rem] font-bold leading-[1.1] tracking-[-0.02em] text-[var(--ink)] sm:text-5xl"
       >
         {profile.headline}
       </h1>
